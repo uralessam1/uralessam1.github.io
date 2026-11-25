@@ -1,0 +1,323 @@
+<title>Samuel Aguilar</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  /* Cinematic creator-style portfolio: huge name, full-bleed B&W portrait, warm coral gradient, floating pill nav. Committed warm/light world. */
+  :root{
+    --bg:#f4f1ec; --ink:#141217; --ink-soft:#56514b; --line:rgba(20,18,23,.12);
+    --card:#ffffff; --dark:#121014;
+    --coral:#ff4d2e; --coral-2:#ff8a3d; --amber:#ffb24d;
+    --font-display:"Archivo",system-ui,sans-serif;
+    --font-body:"Inter",system-ui,sans-serif;
+    --font-mono:"JetBrains Mono",ui-monospace,monospace;
+    --maxw:72rem; color-scheme:light;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw);margin-inline:auto;
+    padding-left:max(22px,env(safe-area-inset-left,0px));
+    padding-right:max(22px,env(safe-area-inset-right,0px))}
+  h1,h2,h3{margin:0;font-family:var(--font-display);line-height:.95;text-wrap:balance}
+  a{color:inherit;text-decoration:none}
+  .eyebrow{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin:0 0 1.2rem}
+
+  .nav{position:sticky;top:max(.8rem,env(safe-area-inset-top,0px));z-index:30;margin-top:.8rem}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+  .brand{font-family:var(--font-display);font-weight:800;font-size:1rem;background:var(--dark);color:#fff;padding:.5rem .85rem;border-radius:999px}
+  .pills{display:flex;gap:.5rem}
+  .pill{font-family:var(--font-body);font-weight:600;font-size:.86rem;padding:.55rem 1rem;border-radius:999px;background:rgba(20,18,23,.9);color:#fff;display:inline-flex;align-items:center;gap:.5rem;backdrop-filter:blur(6px);transition:transform .12s ease;border:none;cursor:pointer}
+  .pill:hover{transform:translateY(-2px)}
+  .pill.accent{background:var(--coral)}
+  .pill.lang{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .pill.accent .dot{width:1.4rem;height:1.4rem;border-radius:999px;background:#fff;color:var(--coral);display:grid;place-items:center;font-weight:800;margin-left:.1rem}
+
+  .hero{position:relative;overflow:hidden;margin-top:calc(-1 * (env(safe-area-inset-top,0px) + 3.5rem));padding-top:calc(env(safe-area-inset-top,0px) + 6.5rem)}
+  .hero-grid{display:grid;grid-template-columns:1fr .82fr;gap:1.5rem;align-items:end;min-height:min(84vh,780px);padding-bottom:clamp(2rem,5vw,4rem)}
+  .hero-left{padding-bottom:1rem}
+  .hero h1{font-size:clamp(3.4rem,13vw,9rem);font-weight:900;text-transform:uppercase;letter-spacing:-.04em}
+  .hero h1 span{display:block}
+  .hero .sub{font-family:var(--font-mono);font-size:clamp(.78rem,2vw,.95rem);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-top:1.3rem;line-height:1.9}
+  .hero .sub b{color:var(--ink)}
+  .socials{display:flex;gap:.6rem;margin-top:1.4rem;flex-wrap:wrap}
+  .chip{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:.4rem .8rem;color:var(--ink-soft)}
+
+  .portrait{position:relative;border-radius:1.4rem 1.4rem 0 0;overflow:hidden;align-self:stretch;min-height:clamp(24rem,54vw,42rem);background:linear-gradient(180deg,#e9e4dc,#d8d2c8)}
+  .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;transform:scale(1.34);transform-origin:center 40%;filter:contrast(1.03) saturate(1.03)}
+  .portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,rgba(255,77,46,.4) 92%,var(--coral) 112%);mix-blend-mode:multiply}
+  .scroll-hint{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);padding-bottom:1.4rem}
+
+  section{padding-block:clamp(3rem,7vw,5.5rem)}
+  .sec-head{font-size:clamp(2.2rem,7vw,4rem);font-weight:900;text-transform:uppercase;letter-spacing:-.03em}
+
+  .about{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .about-grid{display:grid;grid-template-columns:.8fr 1fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center}
+  .about-media{border-radius:1.2rem;overflow:hidden;min-height:22rem;position:relative;background:#1b1920}
+  .about-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 16%;filter:contrast(1.02) saturate(1.03)}
+  .about-text p{font-size:clamp(1.05rem,2.3vw,1.35rem);line-height:1.5;margin:0 0 1.1rem;max-width:44ch}
+  .about-text p:last-child{margin-bottom:0}
+  .about-text b{font-weight:600}
+
+  .exp{display:grid;grid-template-columns:auto 1fr;gap:1rem 2.4rem;padding-block:1.8rem;border-top:1px solid var(--line)}
+  .exp:first-of-type{border-top:none}
+  .exp .meta{min-width:12rem}
+  .exp .yr{font-family:var(--font-mono);font-size:.76rem;color:var(--ink-soft)}
+  .exp .co{font-family:var(--font-display);font-weight:800;font-size:1.5rem;text-transform:uppercase;margin-top:.3rem;line-height:1}
+  .exp-body{min-width:0}
+  .exp-body .role{font-weight:600;font-size:1.05rem;margin-bottom:.5rem}
+  .exp-body p{margin:0 0 .8rem;color:var(--ink-soft);font-size:.98rem;max-width:60ch}
+  .exp-body ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.45rem}
+  .exp-body li{padding-left:1.1rem;position:relative;font-size:.97rem}
+  .exp-body li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--coral)}
+  .exp-body li b{font-weight:700;color:var(--coral)}
+  @media (max-width:620px){.exp{grid-template-columns:1fr;gap:.6rem}}
+
+  .companies{background:var(--dark);color:#fff}
+  .companies .eyebrow{color:var(--amber)}
+  .companies .sec-head{color:#fff}
+  .logos{display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));gap:1px;margin-top:2rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);border-radius:1rem;overflow:hidden}
+  .logo{background:var(--dark);padding:2rem 1rem;display:grid;place-items:center;text-align:center;font-family:var(--font-display);font-weight:800;font-size:1.25rem;text-transform:uppercase;color:#fff;transition:background .2s}
+  .logo:hover{background:#1c1a21}
+  .logo small{display:block;font-family:var(--font-mono);font-size:.62rem;font-weight:400;letter-spacing:.08em;color:rgba(255,255,255,.5);margin-top:.4rem}
+
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1.5rem;margin-top:2rem}
+  .skill h3{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);font-weight:500;margin-bottom:.5rem}
+  .skill p{margin:0;color:var(--ink-soft);font-size:.95rem;line-height:1.5}
+
+  .contact{background:var(--card);border-top:1px solid var(--line)}
+  .contact .big{font-size:clamp(2.4rem,8vw,5rem);font-weight:900;text-transform:uppercase;letter-spacing:-.03em}
+  .contact .big em{font-style:normal;color:var(--coral)}
+  .cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.2rem;margin-top:2.2rem}
+  .ccard{border:1px solid var(--line);border-radius:1rem;padding:1.2rem 1.3rem;background:var(--bg);min-width:0}
+  .ccard .lbl{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.5rem}
+  .ccard .val{font-size:1rem;word-break:break-word;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+  .copy{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink-soft);border-radius:6px;padding:.25rem .5rem;transition:color .15s,border-color .15s}
+  .copy:hover,.copy.ok{color:var(--coral);border-color:var(--coral)}
+  .cta-row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.8rem}
+  .btn{font-weight:600;font-size:.95rem;padding:.8rem 1.3rem;border-radius:999px;background:var(--coral);color:#fff;display:inline-flex;align-items:center;gap:.5rem;transition:transform .12s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn .soon{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.06em;border:1px solid currentColor;border-radius:4px;padding:.05rem .3rem;opacity:.7}
+  .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem;margin-top:2.6rem;padding-top:1.3rem;border-top:1px solid var(--line);font-family:var(--font-mono);font-size:.72rem;color:var(--ink-soft)}
+
+  @media (max-width:820px){
+    .hero-grid{grid-template-columns:1fr;min-height:0;gap:2rem}
+    .portrait{order:-1;min-height:24rem;border-radius:1.2rem}
+    .about-grid{grid-template-columns:1fr}
+    .about-media{order:-1;min-height:18rem}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="#top">SA</a>
+  <div class="pills">
+    <button class="pill lang" id="langToggle">ES</button>
+    <a class="pill" href="#about" data-i18n="nav.menu">Menu</a>
+    <a class="pill accent" href="#contact"><span data-i18n="nav.contact">Contact</span> <span class="dot">→</span></a>
+  </div>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <h1><span>Samuel</span><span>Aguilar</span></h1>
+      <p class="sub"><span data-i18n="hero.role">Senior Full Stack <b>.NET</b> Engineer</span><br><span data-i18n="hero.sub">Software Architecture &amp; AI Engineering · <b>10+ years</b></span></p>
+      <div class="socials">
+        <span class="chip">Guadalajara, MX</span>
+        <span class="chip" data-i18n="chip.remote">Remote-ready</span>
+        <span class="chip" data-i18n="chip.eng">English B2</span>
+      </div>
+    </div>
+    <div class="portrait"><img src="samuel.jpg" alt="Samuel Aguilar"></div>
+  </div>
+  <div class="scroll-hint" data-i18n="scroll">↓ Scroll</div>
+</div></header>
+
+<main>
+  <section class="about" id="about"><div class="wrap">
+    <div class="about-grid">
+      <div class="about-media"><img src="samuel-navy.jpg" alt="Samuel Aguilar"></div>
+      <div class="about-text">
+        <p class="eyebrow" data-i18n="about.eyebrow">About</p>
+        <p data-i18n="about.p1"><b>Senior Full Stack .NET Engineer with 10+ years</b> building and architecting enterprise SaaS across real estate, banking, CRM and retail.</p>
+        <p data-i18n="about.p2">Deep in the Microsoft ecosystem — C#, ASP.NET Core, SQL Server and Azure — with real architecture: DDD, CQRS, event-driven and modular monoliths. I design reliable distributed systems and bring in <b>AI-assisted engineering</b> (Claude Code, agents, Spec-Driven Development) to raise quality and speed.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <section><div class="wrap">
+    <p class="eyebrow" data-i18n="exp.eyebrow">Experience</p>
+    <h2 class="sec-head" data-i18n="exp.head">What I've built</h2>
+    <div style="margin-top:2.4rem">
+      <article class="exp">
+        <div class="meta"><div class="yr" data-i18n="exp1.yr">2023 — Present</div><div class="co">Venteks</div></div>
+        <div class="exp-body">
+          <div class="role">Senior .NET Full Stack Engineer</div>
+          <p data-i18n="exp1.desc">One of the company's principal engineers on a 10-person team — defining architecture, reviewing code and mentoring — delivering enterprise SaaS end-to-end.</p>
+          <ul data-i18n="exp1.b"><li>Real-estate ERP (10 projects, ~5,000 clients); a client self-service portal <b>tripled contract creation</b> and <b>cut cancellations 50%</b>.</li><li>Architected from scratch the platform behind <b>2,200 physical kiosks</b> — Modular Monolith (DDD, CQRS), Outbox + Azure Service Bus, offline-first and auditable reconciliation.</li><li>Delivered a system with minimal hand-written code via a Claude Code harness, at a <b>low defect rate</b>.</li></ul>
+        </div>
+      </article>
+      <article class="exp">
+        <div class="meta"><div class="yr">2020 — 2023</div><div class="co">Exigo</div></div>
+        <div class="exp-body">
+          <div class="role">Full-Stack Engineer</div>
+          <p data-i18n="exp2.desc">A 3-person team maintaining a large, high-complexity SaaS CRM serving <b>1,000+ clients</b> in the MLM industry, with a steady release cadence.</p>
+          <ul data-i18n="exp2.b"><li>Backend for sales, commissions and inventory — the core revenue modules.</li><li>Optimized SQL Server stored procedures, triggers and queries behind complex logic.</li></ul>
+        </div>
+      </article>
+      <article class="exp">
+        <div class="meta"><div class="yr">2019</div><div class="co">GAP</div></div>
+        <div class="exp-body">
+          <div class="role" data-i18n="exp3.role">.NET Developer · Grupo Aeroportuario del Pacífico</div>
+          <p data-i18n="exp3.desc">Prepaid Wi-Fi and payment platform for passengers, built for GAP's network of <b>14 airports</b>.</p>
+          <ul data-i18n="exp3.b"><li>Backend and APIs for access-control and payments, including real payment processing.</li><li>Integrated real-time access control (Cisco Meraki) and async messaging (Amazon SQS).</li></ul>
+        </div>
+      </article>
+      <article class="exp">
+        <div class="meta"><div class="yr">2018 — 2019</div><div class="co">HP</div></div>
+        <div class="exp-body">
+          <div class="role">.NET Developer</div>
+          <p data-i18n="exp4.desc">Enterprise applications supporting global customs and warehouse operations.</p>
+          <ul data-i18n="exp4.b"><li>Maintained the SDA order-tracking app and optimized SQL Server queries to resolve data inconsistencies.</li></ul>
+        </div>
+      </article>
+      <article class="exp">
+        <div class="meta"><div class="yr">2016 — 2018</div><div class="co">Stratia</div></div>
+        <div class="exp-body">
+          <div class="role">Software Developer</div>
+          <p data-i18n="exp5.desc">Redesign of a custom SaaS ERP used by a ~40-lawyer firm.</p>
+          <ul data-i18n="exp5.b"><li>Restructured an unmaintainable ERP into a <b>modular, extensible architecture</b>.</li></ul>
+        </div>
+      </article>
+      <article class="exp">
+        <div class="meta"><div class="yr">2015 — 2016</div><div class="co">Sidel</div></div>
+        <div class="exp-body">
+          <div class="role">IT Developer</div>
+          <p data-i18n="exp6.desc">Internal tooling for Warehouse, Accounting and HR.</p>
+          <ul data-i18n="exp6.b"><li>Independently designed and built <b>~6 desktop applications</b> (C#, SQL Server) end-to-end.</li></ul>
+        </div>
+      </article>
+    </div>
+  </div></section>
+
+  <section class="companies"><div class="wrap">
+    <p class="eyebrow" data-i18n="comp.eyebrow">Track record</p>
+    <h2 class="sec-head" data-i18n="comp.head">Companies &amp; results</h2>
+    <div class="logos">
+      <div class="logo">HP<small data-i18n="comp.hp">Global customs</small></div>
+      <div class="logo">GAP<small data-i18n="comp.gap">14 airports</small></div>
+      <div class="logo">Venteks<small data-i18n="comp.ven">2,200 kiosks</small></div>
+      <div class="logo">Exigo<small data-i18n="comp.exi">1,000+ clients</small></div>
+      <div class="logo">Stratia<small data-i18n="comp.str">ERP redesign</small></div>
+      <div class="logo">Sidel<small data-i18n="comp.sid">6 apps</small></div>
+    </div>
+  </div></section>
+
+  <section><div class="wrap">
+    <p class="eyebrow" data-i18n="skills.eyebrow">Stack</p>
+    <h2 class="sec-head" data-i18n="skills.head">Tools</h2>
+    <div class="skills-grid">
+      <div class="skill"><h3>Languages</h3><p>C#, TypeScript, JavaScript, SQL / T-SQL</p></div>
+      <div class="skill"><h3>Backend</h3><p>.NET Core, ASP.NET Core, Web API, EF Core, Dapper, Node.js, Azure Functions</p></div>
+      <div class="skill"><h3>Frontend</h3><p>React, Redux, Blazor, Razor</p></div>
+      <div class="skill"><h3>Architecture</h3><p>DDD, Clean Architecture, CQRS, Event-Driven, Modular Monolith, Outbox</p></div>
+      <div class="skill"><h3>Cloud &amp; DevOps</h3><p>Azure, Azure DevOps, Docker, Kubernetes, CI/CD</p></div>
+      <div class="skill"><h3>AI &amp; Agentic</h3><p>Claude Code, custom agents, skills, hooks, Spec-Driven Development</p></div>
+    </div>
+  </div></section>
+
+  <section class="contact" id="contact"><div class="wrap">
+    <p class="eyebrow" data-i18n="contact.eyebrow">Contact</p>
+    <h2 class="big" data-i18n="contact.big">Let's build something <em>reliable.</em></h2>
+    <div class="cgrid">
+      <div class="ccard"><div class="lbl">Email</div>
+        <div class="val"><span>uralessam94@gmail.com</span><button class="copy" data-copy="uralessam94@gmail.com" data-i18n="copy">Copy</button></div></div>
+      <div class="ccard"><div class="lbl" data-i18n="lbl.phone">Phone</div>
+        <div class="val"><span>+52 (33) 3131-1568</span><button class="copy" data-copy="+523331311568" data-i18n="copy">Copy</button></div></div>
+      <div class="ccard"><div class="lbl">LinkedIn</div>
+        <div class="val"><a href="https://www.linkedin.com/in/samuel-gerardo-aguilar-l%C3%B3pez-32961717a/" target="_blank" rel="noopener" style="color:var(--coral)">linkedin.com/in/samuel-aguilar</a></div></div>
+      <div class="ccard"><div class="lbl">GitHub</div>
+        <div class="val" style="color:var(--ink-soft)" data-i18n="github.soon">Coming soon</div></div>
+    </div>
+    <div class="cta-row">
+      <a class="btn" href="https://www.linkedin.com/in/samuel-gerardo-aguilar-l%C3%B3pez-32961717a/" target="_blank" rel="noopener" data-i18n="btn.connect">Connect on LinkedIn →</a>
+      <a class="btn ghost" href="CV_Samuel_Aguilar.pdf" download><span data-i18n="btn.cv">Download CV</span></a>
+    </div>
+    <div class="foot"><span>© 2026 Samuel Aguilar</span><span>Guadalajara · México</span></div>
+  </div></section>
+</main>
+
+<script>
+  var dict={
+    "nav.menu":{en:"Menu",es:"Menú"},
+    "nav.contact":{en:"Contact",es:"Contacto"},
+    "hero.role":{en:"Senior Full Stack <b>.NET</b> Engineer",es:"Ingeniero Senior Full Stack <b>.NET</b>"},
+    "hero.sub":{en:"Software Architecture &amp; AI Engineering · <b>10+ years</b>",es:"Arquitectura de Software &amp; Ingeniería de IA · <b>10+ años</b>"},
+    "chip.remote":{en:"Remote-ready",es:"Disponible remoto"},
+    "chip.eng":{en:"English B2",es:"Inglés B2"},
+    "scroll":{en:"↓ Scroll",es:"↓ Baja"},
+    "about.eyebrow":{en:"About",es:"Sobre mí"},
+    "about.p1":{en:"<b>Senior Full Stack .NET Engineer with 10+ years</b> building and architecting enterprise SaaS across real estate, banking, CRM and retail.",es:"<b>Ingeniero Senior Full Stack .NET con 10+ años</b> construyendo y arquitectando software empresarial SaaS en inmobiliaria, banca, CRM y retail."},
+    "about.p2":{en:"Deep in the Microsoft ecosystem — C#, ASP.NET Core, SQL Server and Azure — with real architecture: DDD, CQRS, event-driven and modular monoliths. I design reliable distributed systems and bring in <b>AI-assisted engineering</b> (Claude Code, agents, Spec-Driven Development) to raise quality and speed.",es:"A fondo en el ecosistema Microsoft — C#, ASP.NET Core, SQL Server y Azure — con arquitectura real: DDD, CQRS, event-driven y modular monoliths. Diseño sistemas distribuidos confiables e integro <b>ingeniería asistida por IA</b> (Claude Code, agentes, Spec-Driven Development) para elevar calidad y velocidad."},
+    "exp.eyebrow":{en:"Experience",es:"Experiencia"},
+    "exp.head":{en:"What I've built",es:"Lo que he construido"},
+    "exp1.yr":{en:"2023 — Present",es:"2023 — Presente"},
+    "exp1.desc":{en:"One of the company's principal engineers on a 10-person team — defining architecture, reviewing code and mentoring — delivering enterprise SaaS end-to-end.",es:"Uno de los principales ingenieros en un equipo de 10 — defino arquitectura, reviso código y hago mentoría — entregando SaaS empresarial de punta a punta."},
+    "exp1.b":{en:"<li>Real-estate ERP (10 projects, ~5,000 clients); a client self-service portal <b>tripled contract creation</b> and <b>cut cancellations 50%</b>.</li><li>Architected from scratch the platform behind <b>2,200 physical kiosks</b> — Modular Monolith (DDD, CQRS), Outbox + Azure Service Bus, offline-first and auditable reconciliation.</li><li>Delivered a system with minimal hand-written code via a Claude Code harness, at a <b>low defect rate</b>.</li>",es:"<li>ERP inmobiliario (10 proyectos, ~5,000 clientes); un portal de autoservicio <b>triplicó la creación de contratos</b> y <b>redujo 50% las cancelaciones</b>.</li><li>Arquitecté desde cero la plataforma detrás de <b>2,200 kioscos físicos</b> — Modular Monolith (DDD, CQRS), Outbox + Azure Service Bus, offline-first y conciliación auditable.</li><li>Entregué un sistema con código mínimo escrito a mano vía un harness de Claude Code, con <b>baja tasa de defectos</b>.</li>"},
+    "exp2.desc":{en:"A 3-person team maintaining a large, high-complexity SaaS CRM serving <b>1,000+ clients</b> in the MLM industry, with a steady release cadence.",es:"Equipo de 3 manteniendo un CRM SaaS grande y complejo con <b>1,000+ clientes</b> en la industria MLM, con cadencia de releases constante."},
+    "exp2.b":{en:"<li>Backend for sales, commissions and inventory — the core revenue modules.</li><li>Optimized SQL Server stored procedures, triggers and queries behind complex logic.</li>",es:"<li>Backend de ventas, comisiones e inventario — los módulos núcleo de ingreso.</li><li>Optimicé stored procedures, triggers y queries de SQL Server para lógica compleja.</li>"},
+    "exp3.role":{en:".NET Developer · Grupo Aeroportuario del Pacífico",es:".NET Developer · Grupo Aeroportuario del Pacífico"},
+    "exp3.desc":{en:"Prepaid Wi-Fi and payment platform for passengers, built for GAP's network of <b>14 airports</b>.",es:"Plataforma de Wi-Fi y pagos para pasajeros, construida para la red de <b>14 aeropuertos</b> de GAP."},
+    "exp3.b":{en:"<li>Backend and APIs for access-control and payments, including real payment processing.</li><li>Integrated real-time access control (Cisco Meraki) and async messaging (Amazon SQS).</li>",es:"<li>Backend y APIs de control de acceso y pagos, con procesamiento real de cobros.</li><li>Integré control de acceso en tiempo real (Cisco Meraki) y mensajería asíncrona (Amazon SQS).</li>"},
+    "exp4.desc":{en:"Enterprise applications supporting global customs and warehouse operations.",es:"Aplicaciones empresariales para operaciones globales de aduanas y almacén."},
+    "exp4.b":{en:"<li>Maintained the SDA order-tracking app and optimized SQL Server queries to resolve data inconsistencies.</li>",es:"<li>Mantuve la app SDA de seguimiento de órdenes y optimicé queries de SQL Server para resolver inconsistencias.</li>"},
+    "exp5.desc":{en:"Redesign of a custom SaaS ERP used by a ~40-lawyer firm.",es:"Rediseño de un ERP SaaS a medida para un despacho de ~40 abogados."},
+    "exp5.b":{en:"<li>Restructured an unmaintainable ERP into a <b>modular, extensible architecture</b>.</li>",es:"<li>Reestructuré un ERP inmantenible en una <b>arquitectura modular y extensible</b>.</li>"},
+    "exp6.desc":{en:"Internal tooling for Warehouse, Accounting and HR.",es:"Herramientas internas para Almacén, Contabilidad y RH."},
+    "exp6.b":{en:"<li>Independently designed and built <b>~6 desktop applications</b> (C#, SQL Server) end-to-end.</li>",es:"<li>Diseñé y construí solo <b>~6 aplicaciones de escritorio</b> (C#, SQL Server) de principio a fin.</li>"},
+    "comp.eyebrow":{en:"Track record",es:"Trayectoria"},
+    "comp.head":{en:"Companies &amp; results",es:"Empresas &amp; resultados"},
+    "comp.hp":{en:"Global customs",es:"Aduanas globales"},
+    "comp.gap":{en:"14 airports",es:"14 aeropuertos"},
+    "comp.ven":{en:"2,200 kiosks",es:"2,200 kioscos"},
+    "comp.exi":{en:"1,000+ clients",es:"1,000+ clientes"},
+    "comp.str":{en:"ERP redesign",es:"Rediseño ERP"},
+    "comp.sid":{en:"6 apps",es:"6 apps"},
+    "skills.eyebrow":{en:"Stack",es:"Stack"},
+    "skills.head":{en:"Tools",es:"Herramientas"},
+    "contact.eyebrow":{en:"Contact",es:"Contacto"},
+    "contact.big":{en:"Let's build something <em>reliable.</em>",es:"Construyamos algo <em>confiable.</em>"},
+    "lbl.phone":{en:"Phone",es:"Teléfono"},
+    "github.soon":{en:"Coming soon",es:"Próximamente"},
+    "btn.connect":{en:"Connect on LinkedIn →",es:"Conectar en LinkedIn →"},
+    "btn.cv":{en:"Download CV",es:"Descargar CV"},
+    "copy":{en:"Copy",es:"Copiar"}
+  };
+  var current="en";
+  try{var s=localStorage.getItem("lang");if(s==="es"||s==="en")current=s;}catch(e){}
+  var toggle=document.getElementById("langToggle");
+  function apply(lang){
+    document.querySelectorAll("[data-i18n]").forEach(function(el){
+      var k=el.getAttribute("data-i18n");
+      if(dict[k]&&dict[k][lang]!=null) el.innerHTML=dict[k][lang];
+    });
+    document.documentElement.lang=lang;
+    toggle.textContent=(lang==="en")?"ES":"EN";
+    current=lang;
+    try{localStorage.setItem("lang",lang);}catch(e){}
+  }
+  apply(current);
+  toggle.addEventListener("click",function(){apply(current==="en"?"es":"en");});
+
+  document.querySelectorAll(".copy").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var t=btn.getAttribute("data-copy");
+      function ok(){var o=btn.textContent;btn.textContent=(current==="en")?"Copied":"Copiado";btn.classList.add("ok");
+        setTimeout(function(){btn.textContent=o;btn.classList.remove("ok");},1400);}
+      function fb(){try{var r=document.createRange(),sel=window.getSelection();r.selectNodeContents(btn.previousElementSibling||btn);sel.removeAllRanges();sel.addRange(r);ok();}catch(e){}}
+      try{navigator.clipboard.writeText(t).then(ok).catch(fb);}catch(e){fb();}
+    });
+  });
+</script>
